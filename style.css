@@ -1,0 +1,70 @@
+/* imported a 'Helvetica Neue' font alternative 'Nimbus Sans L' */
+@font-face {
+  font-family: 'nimbus_sans_lregular';
+  src: url(./assets/nimbussansl_regular_macroman/NimbusSanL-Reg-webfont.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'nimbus_sans_lregular', "Nimbus Sans L", "Helvetica Neue", helvetica, arial, sans-serif;
+    margin: 0.5em;
+}
+th {
+  border: 2px solid #800080;
+  padding: 1em;
+  text-align: center;
+  font-family: 'Rock Salt';
+}
+
+/*used border collapse insted of setting the border spacing to 0, because it eliminates the 'double border' between cells*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+tbody {
+  text-align: center;
+}
+td {
+  padding: 1em 5em;
+}
+#total_name {
+  text-align: right;
+}
+#total_number {
+  text-align: left;
+  font-family: 'nimbus_sans_lregular';
+}
+tbody tr td:first-child {
+  font-weight: bold;
+}
+/*had to apply texture seperately, because of specificity rules*/
+tbody tr:nth-child(odd) {
+  background-color: #ff33cc;
+  background-image: url(./assets/noise.png);
+}
+tbody tr:nth-child(even) {
+  background-color: #e495e4;
+  background-image: url(./assets/noise.png);
+}
+/*struggled with making the text come out on top, used z-index to correct it*/
+thead, tfoot {
+  background-image: url(./assets/leopardskin.jpg);
+  background-repeat: repeat;
+  position: relative;
+  z-index: -1;
+}
+/*used ::after selector to ensure the gradient does not overwrite the bg image*/
+thead::after, tfoot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  z-index: -1;
+}
+thead, tfoot {
+  color: white;
+}
